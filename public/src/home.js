@@ -26,13 +26,13 @@ function getMostCommonGenres(books) {
 }
 
 function getMostPopularBooks(books) {
-  const mostPopBooks = books.reduce((popularB, book) => {
-    popularB.push({
+  const mostPopBooks = []
+  books.map(book => {
+    mostPopBooks.push({
       name: book.title,
       count: book.borrows.length 
     })
-    return popularB
-  }, [])
+  })
   mostPopBooks.sort((bookA, bookB) => bookB.count - bookA.count);
   mostPopBooks.splice(5);
   return mostPopBooks;
